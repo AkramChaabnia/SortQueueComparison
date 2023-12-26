@@ -12,34 +12,40 @@ import java.util.PriorityQueue;
 import java.util.Random;
 
 public class FlowAlgorithms extends Application {
+
     @Override
     public void start(Stage primaryStage) {
         primaryStage.setTitle("Performance Comparison");
+
         NumberAxis xAxis = new NumberAxis();
         NumberAxis yAxis = new NumberAxis();
         LineChart<Number, Number> lineChart = new LineChart<>(xAxis, yAxis);
         lineChart.setTitle("Performance Comparison");
+
         XYChart.Series<Number, Number> quicksortSeries = new XYChart.Series<>();
         quicksortSeries.setName("Quicksort");
+
         XYChart.Series<Number, Number> priorityQueueSeries = new XYChart.Series<>();
         priorityQueueSeries.setName("Priority Queue");
-        int[] sizes = { 10, 100, 1000, 10000, 100000 }; // Add more sizes as needed
+
+        int[] sizes = {10, 100, 1000, 10000, 100000}; // Add more sizes as needed
+
         for (int size : sizes) {
             int[] data = generateRandomData(size);
+
             long quicksortTime = measureQuicksortTime(data.clone());
             long priorityQueueTime = measurePriorityQueueTime(data.clone());
+
             quicksortSeries.getData().add(new XYChart.Data<>(size, quicksortTime));
             priorityQueueSeries.getData().add(new XYChart.Data<>(size, priorityQueueTime));
         }
+
         lineChart.getData().addAll(quicksortSeries, priorityQueueSeries);
+
         Scene scene = new Scene(lineChart, 800, 600);
         primaryStage.setScene(scene);
+
         primaryStage.show();
-        quicksortSeries.getNode().setStyle("-fx-stroke: #FF0000;");
-        priorityQueueSeries.getNode().setStyle("-fx-stroke: #0000FF;");
-        xAxis.setLabel("Taille des données");
-        yAxis.setLabel("Temps d'exécution (ms)");
-        lineChart.setLegendVisible(true);
     }
 
     private long measureQuicksortTime(int[] data) {
@@ -52,6 +58,7 @@ public class FlowAlgorithms extends Application {
     private long measurePriorityQueueTime(int[] data) {
         long startTime = System.currentTimeMillis();
         PriorityQueue<Integer> minHeap = new PriorityQueue<>(Arrays.asList(toIntegerArray(data)));
+        minHeap.toArray(); // To force heap construction
         long endTime = System.currentTimeMillis();
         return endTime - startTime;
     }
