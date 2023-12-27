@@ -28,7 +28,7 @@ public class FlowAlgorithms extends Application {
         XYChart.Series<Number, Number> priorityQueueSeries = new XYChart.Series<>();
         priorityQueueSeries.setName("Priority Queue");
 
-        int[] sizes = {10, 100, 1000, 10000, 100000}; // Add more sizes as needed
+        int[] sizes = { 10, 100, 1000, 10000, 100000 }; // Add more sizes as needed
 
         for (int size : sizes) {
             int[] data = generateRandomData(size);
@@ -58,7 +58,6 @@ public class FlowAlgorithms extends Application {
     private long measurePriorityQueueTime(int[] data) {
         long startTime = System.currentTimeMillis();
         PriorityQueue<Integer> minHeap = new PriorityQueue<>(Arrays.asList(toIntegerArray(data)));
-        minHeap.toArray(); // To force heap construction
         long endTime = System.currentTimeMillis();
         return endTime - startTime;
     }
