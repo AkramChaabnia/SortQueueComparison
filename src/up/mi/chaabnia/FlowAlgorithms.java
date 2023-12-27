@@ -44,6 +44,12 @@ public class FlowAlgorithms extends Application {
 
         lineChart.getData().addAll(quicksortSeries, priorityQueueSeries);
 
+        // Personnaliser le graphique
+        lineChart.setStyle("-fx-background-color: white;");
+        xAxis.setLabel("Size");
+        yAxis.setLabel("Time");
+        lineChart.setLegendVisible(true);
+
         Scene scene = new Scene(lineChart, 800, 600);
         primaryStage.setScene(scene);
         primaryStage.show();
