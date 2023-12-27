@@ -10,6 +10,8 @@ import javafx.stage.Stage;
 import java.util.Arrays;
 import java.util.PriorityQueue;
 import java.util.Random;
+import java.io.FileWriter;
+import java.io.IOException;
 
 public class FlowAlgorithms extends Application {
 
@@ -44,8 +46,12 @@ public class FlowAlgorithms extends Application {
 
         Scene scene = new Scene(lineChart, 800, 600);
         primaryStage.setScene(scene);
-
         primaryStage.show();
+
+        primaryStage.setOnCloseRequest(e -> {
+            writeDataToCSV("quicksort_data.csv", quicksortSeries);
+            writeDataToCSV("priority_queue_data.csv", priorityQueueSeries);
+        });
     }
 
     private long measureQuicksortTime(int[] data) {
@@ -102,6 +108,20 @@ public class FlowAlgorithms extends Application {
         array[i + 1] = array[high];
         array[high] = temp;
         return i + 1;
+    }
+
+    private void writeDataToCSV(String filename, XYChart.Series<Number, Number> series) {
+        try {
+            FileWriter writer = new FileWriter(filename);
+            writer.append("Size,Time\n");
+            for (XYChart.Data<Number, Number> data : series.getData()) {
+                writer.append(String.format("%d,%d\n", data.getXValue(), data.getYValue()));
+            }
+            writer.flush();
+            writer.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     public static void main(String[] args) {
