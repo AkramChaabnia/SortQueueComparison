@@ -1,5 +1,3 @@
-package up.mi.chaabnia;
-
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.scene.chart.LineChart;
@@ -55,22 +53,27 @@ public class FlowAlgorithms extends Application {
         primaryStage.show();
 
         primaryStage.setOnCloseRequest(e -> {
-            writeDataToCSV("quicksort_data.csv", quicksortSeries);
-            writeDataToCSV("priority_queue_data.csv", priorityQueueSeries);
+            String quicksortFile = "quicksort_data.csv";
+            String priorityQueueFile = "priority_queue_data.csv";
+            writeDataToCSV(quicksortFile, quicksortSeries);
+            writeDataToCSV(priorityQueueFile, priorityQueueSeries);
         });
     }
 
     private long measureQuicksortTime(int[] data) {
-        long startTime = System.currentTimeMillis();
+        long startTime = System.nanoTime();
         quicksort(data, 0, data.length - 1);
-        long endTime = System.currentTimeMillis();
+        long endTime = System.nanoTime();
         return endTime - startTime;
     }
 
     private long measurePriorityQueueTime(int[] data) {
-        long startTime = System.currentTimeMillis();
-        PriorityQueue<Integer> minHeap = new PriorityQueue<>(Arrays.asList(toIntegerArray(data)));
-        long endTime = System.currentTimeMillis();
+        long startTime = System.nanoTime();
+        PriorityQueue<Integer> minHeap = new PriorityQueue<>();
+        for (int num : data) {
+            minHeap.offer(num);
+        }
+        long endTime = System.nanoTime();
         return endTime - startTime;
     }
 
@@ -85,8 +88,9 @@ public class FlowAlgorithms extends Application {
     private int[] generateRandomData(int size) {
         int[] data = new int[size];
         Random random = new Random();
+        int bound = 1000; // Limite supérieure des nombres aléatoires
         for (int i = 0; i < size; i++) {
-            data[i] = random.nextInt();
+            data[i] = random.nextInt(bound); // Générer des nombres aléatoires entre 0 et 999
         }
         return data;
     }
