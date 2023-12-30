@@ -13,7 +13,7 @@ import java.util.Random;
 import java.io.FileWriter;
 import java.io.IOException;
 
-public class FlowAlgorithms extends Application {
+public class SortQueueComparison extends Application {
 
     @Override
     public void start(Stage primaryStage) {

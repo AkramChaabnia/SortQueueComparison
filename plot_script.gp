@@ -1,4 +1,4 @@
-set terminal pdfcairo enhanced font 'Verdana,12'
+set terminal pngcairo enhanced font 'Verdana,12'
 set output 'performance_plot.png'
 
 set title "Performance Comparison"
