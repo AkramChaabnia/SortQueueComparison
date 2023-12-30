@@ -1,11 +1,13 @@
+package up.mi.chaabnia;
+
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.scene.chart.LineChart;
 import javafx.scene.chart.NumberAxis;
 import javafx.scene.chart.XYChart;
 import javafx.stage.Stage;
-
 import java.util.Arrays;
+
 import java.util.PriorityQueue;
 import java.util.Random;
 import java.io.FileWriter;
