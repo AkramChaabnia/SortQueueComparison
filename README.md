@@ -99,18 +99,17 @@ Additionally:
 To compile and execute the project:
 
 1. Clone the repository or download the project files.
-2. Install Gnuplot and add it to the system's environment variables if not done already.
 
 ### Using an IDE (Eclipse, VSCode, etc.)
 
-3. Set up the JavaFX environment in your IDE.
-4. Run the `SortQueueComparison.java` file.
+2. Set up the JavaFX environment in your IDE.
+3. Run the `SortQueueComparison.java` file.
 
 ### Using Command Line
 
-3. Compile the Java code using the command: `javac --module-path /path/to/javafx-sdk/lib --add-modules javafx.controls SortQueueComparison.java`.
-4. Run the compiled code using the command: `java --module-path /path/to/javafx-sdk/lib --add-modules javafx.controls SortQueueComparison`.
-5. Execute the command `gnuplot plot_script.gp` in the project directory to generate the performance plot.
+2. Compile the Java code using the command: `javac --module-path /path/to/javafx-sdk/lib --add-modules javafx.controls SortQueueComparison.java`.
+3. Run the compiled code using the command: `java --module-path /path/to/javafx-sdk/lib --add-modules javafx.controls SortQueueComparison`.
+4. Execute the command `gnuplot plot_script.gp` in the project directory to generate the performance plot.
 
 ## 🎈 Usage <a name="usage"></a>
 
